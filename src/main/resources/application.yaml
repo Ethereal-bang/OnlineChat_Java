@@ -4,3 +4,7 @@ spring:
     password: theday1012
     url: jdbc:mysql://localhost:3306/online_chat?serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  type-aliases-package: online_chat_server.pojo
+  mapper-locations: classpath:mybatis/mapper/*.xml
