@@ -26,4 +26,16 @@
         where id = #{id};
     </select>
 
+    <update id="setName" parameterType="String">
+        update user set name = #{name};
+    </update>
+
+    <update id="setWord" parameterType="String">
+        update user set word = #{word};
+    </update>
+
+    <update id="setAvatar" parameterType="String">
+        update user set avatar = #{avatar};
+    </update>
+
 </mapper>

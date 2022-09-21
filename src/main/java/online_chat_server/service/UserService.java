@@ -12,4 +12,10 @@ public interface UserService {
 
     User getInfo(int id);
 
+    boolean setName(String name);
+
+    boolean setWord(String word);
+
+    boolean setAvatar(String avatar);
+
 }

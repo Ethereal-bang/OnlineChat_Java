@@ -34,4 +34,19 @@ public class UserServiceImpl implements UserService {
         return userMapper.getInfo(id);
     }
 
+    @Override
+    public boolean setName(String name) {
+        return userMapper.setName(name);
+    }
+
+    @Override
+    public boolean setWord(String word) {
+        return userMapper.setWord(word);
+    }
+
+    @Override
+    public boolean setAvatar(String avatar) {
+        return userMapper.setAvatar(avatar);
+    }
+
 }

@@ -1,7 +1,8 @@
 # User
 
 ## /login 创建/登录账号
-
+**Path**: int id, String password
+**msg**: 
 + 创建成功
 + 登陆成功
 + 创建失败
@@ -24,3 +25,7 @@
   }
 }
 ```
+
+## /modify/{key}
+**PathVariable**: name | word | avatar
+**msg**: 修改成功 | 修改失败

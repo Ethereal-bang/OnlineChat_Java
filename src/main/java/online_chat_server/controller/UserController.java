@@ -5,6 +5,7 @@ import online_chat_server.pojo.User;
 import online_chat_server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/user")
@@ -41,6 +42,25 @@ public class UserController {
     @GetMapping("/getInfo/{id}")
     public Result getInfo(@PathVariable("id") int id) {
         return Result.ok().data("user", userService.getInfo(id));
+    }
+
+    @GetMapping("/modify/{key}")
+    public Result modify(@PathVariable("key") String key, @RequestParam("val") String val) {
+        boolean flag = false;
+        switch (key) {
+            case "name":
+                flag = userService.setName(val);
+                break;
+            case "word":
+                flag = userService.setWord(val);
+                break;
+            case "avatar":
+                flag = userService.setAvatar(val);
+                break;
+        }
+        return flag
+                ? Result.ok().setMsg("修改成功")
+                : Result.err().setMsg("修改失败");
     }
 
 }
