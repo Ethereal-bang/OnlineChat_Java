@@ -29,4 +29,9 @@ public class UserServiceImpl implements UserService {
         return userMapper.login(new User(id, pwd));
     }
 
+    @Override
+    public User getInfo(int id) {
+        return userMapper.getInfo(id);
+    }
+
 }

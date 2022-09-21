@@ -20,4 +20,10 @@
         where id = #{id} AND password = #{password};
     </select>
 
+    <select id="getInfo" parameterType="int" resultType="User">
+        select id, name, avatar, word
+        from user
+        where id = #{id};
+    </select>
+
 </mapper>

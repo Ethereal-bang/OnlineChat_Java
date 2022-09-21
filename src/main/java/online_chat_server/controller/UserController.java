@@ -4,10 +4,7 @@ import online_chat_server.common.Result;
 import online_chat_server.pojo.User;
 import online_chat_server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
@@ -40,4 +37,10 @@ public class UserController {
             }
         }
     }
+
+    @GetMapping("/getInfo/{id}")
+    public Result getInfo(@PathVariable("id") int id) {
+        return Result.ok().data("user", userService.getInfo(id));
+    }
+
 }

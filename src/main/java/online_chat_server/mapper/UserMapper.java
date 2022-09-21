@@ -12,4 +12,6 @@ public interface UserMapper {
 
     boolean login(User user);
 
+    User getInfo(int id);
+
 }
