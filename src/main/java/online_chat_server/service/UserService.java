@@ -1,6 +1,7 @@
 package online_chat_server.service;
 
 import online_chat_server.pojo.User;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface UserService {
 
@@ -17,5 +18,7 @@ public interface UserService {
     boolean setWord(String word);
 
     boolean setAvatar(String avatar);
+
+    String upload(MultipartFile multipartFile);
 
 }
