@@ -1,4 +1,4 @@
-# User
+# User 用户
 
 ## /login 创建/登录账号
 **Path**: int id, String password
@@ -29,3 +29,24 @@
 ## /modify/{key}
 **PathVariable**: name | word | avatar
 **msg**: 修改成功 | 修改失败
+
+# Contact 联系人
+库(多对多): id, own, contact, score 亲密度
+
+## /? 通过ID添加好友
+
+## /? 删除联系人
+
+## /? 屏蔽联系人
+
+## /? 联系人列表
+name, avatar, news, time, state
+### ? 全部
+### ? 按亲密度排行
+### ? 检索
+
+# News 消息
+库(多对一): id, sender, receiver, content, word, time
++ ?content富文本,word纯文字便于词云
+
+## /? 与某人聊天记录
