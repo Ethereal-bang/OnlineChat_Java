@@ -3,6 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="online_chat_server.mapper.UserMapper">
+<mapper namespace="online_chat_server.mapper.ContactMapper">
+
+    <insert id="add">
+        insert into contact (own, contact)
+        value (#{own}, #{contact});
+    </insert>
 
 </mapper>

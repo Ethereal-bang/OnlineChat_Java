@@ -34,7 +34,9 @@
 库(多对多): id, own, contact, score 亲密度, state
 + state 申请中 | 已同意 | 已拒绝 | 已屏蔽 | 被屏蔽
 
-## /? 通过ID添加好友
+## /add 通过ID添加好友
++ Param: id, contact
++ msg: 已发送好友申请 | 发送好友申请失败
 
 ## /? 删除联系人
 
@@ -52,3 +54,7 @@ name, avatar, news, time, state
 
 ## /? 与某人聊天记录
 Params: own, contact
+
+# 图片
+
+## / 请求 static 文件夹下图片
