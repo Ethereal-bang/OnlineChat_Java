@@ -31,7 +31,8 @@
 **msg**: 修改成功 | 修改失败
 
 # Contact 联系人
-库(多对多): id, own, contact, score 亲密度
+库(多对多): id, own, contact, score 亲密度, state
++ state 申请中 | 已同意 | 已拒绝 | 已屏蔽 | 被屏蔽
 
 ## /? 通过ID添加好友
 
@@ -50,3 +51,4 @@ name, avatar, news, time, state
 + ?content富文本,word纯文字便于词云
 
 ## /? 与某人聊天记录
+Params: own, contact
