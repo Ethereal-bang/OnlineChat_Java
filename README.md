@@ -28,6 +28,7 @@
 
 ## /modify/{key}
 **PathVariable**: name | word | avatar
+**Param**: id, val
 **msg**: 修改成功 | 修改失败
 
 ## /search/{keyword} 搜索

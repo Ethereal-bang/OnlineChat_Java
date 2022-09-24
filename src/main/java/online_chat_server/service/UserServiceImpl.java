@@ -39,18 +39,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean setName(String name) {
-        return userMapper.setName(name);
+    public boolean setName(int id, String name) {
+        return userMapper.setName(id, name);
     }
 
     @Override
-    public boolean setWord(String word) {
-        return userMapper.setWord(word);
+    public boolean setWord(int id, String word) {
+        return userMapper.setWord(id, word);
     }
 
     @Override
-    public boolean setAvatar(String avatar) {
-        return userMapper.setAvatar(avatar);
+    public boolean setAvatar(int id, String avatar) {
+        return userMapper.setAvatar(id, avatar);
     }
 
     @Override

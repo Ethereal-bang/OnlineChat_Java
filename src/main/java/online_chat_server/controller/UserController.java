@@ -47,17 +47,17 @@ public class UserController {
     }
 
     @GetMapping("/modify/{key}")
-    public Result modify(@PathVariable("key") String key, @RequestParam("val") String val) {
+    public Result modify(@PathVariable("key") String key, @RequestParam("id") int id, @RequestParam("val") String val) {
         boolean flag = false;
         switch (key) {
             case "name":
-                flag = userService.setName(val);
+                flag = userService.setName(id, val);
                 break;
             case "word":
-                flag = userService.setWord(val);
+                flag = userService.setWord(id, val);
                 break;
             case "avatar":
-                flag = userService.setAvatar(val);
+                flag = userService.setAvatar(id, val);
                 break;
         }
         return flag

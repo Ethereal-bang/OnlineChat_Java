@@ -13,11 +13,11 @@ public interface UserService {
 
     User getInfo(int id);
 
-    boolean setName(String name);
+    boolean setName(int id, String name);
 
-    boolean setWord(String word);
+    boolean setWord(int id, String word);
 
-    boolean setAvatar(String avatar);
+    boolean setAvatar(int id, String avatar);
 
     String upload(MultipartFile multipartFile);
 
