@@ -3,10 +3,7 @@ package online_chat_server.controller;
 import online_chat_server.common.Result;
 import online_chat_server.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/contact")
@@ -25,4 +22,10 @@ public class ContactController {
             ? Result.ok().setMsg("已发送好友申请")
             : Result.err().setMsg("发送好友申请失败");
     }
+
+    @GetMapping("/search/{keyword}")
+    public Result search(@PathVariable("keyword") String keyword) {
+        return Result.ok().data("list", contactService.search(keyword));
+    }
+
 }

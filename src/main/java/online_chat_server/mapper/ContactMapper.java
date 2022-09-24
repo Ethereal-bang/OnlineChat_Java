@@ -1,5 +1,6 @@
 package online_chat_server.mapper;
 
+import online_chat_server.pojo.Contact;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

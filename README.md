@@ -30,6 +30,11 @@
 **PathVariable**: name | word | avatar
 **msg**: 修改成功 | 修改失败
 
+## /search/{keyword} 搜索
+根据用户 ID 或昵称匹配
++ PathVariable: keyword
++ data.list: Exclude<User, "password">
+
 # Contact 联系人
 库(多对多): id, own, contact, score 亲密度, state
 + state 申请中 | 已同意 | 已拒绝 | 已屏蔽 | 被屏蔽

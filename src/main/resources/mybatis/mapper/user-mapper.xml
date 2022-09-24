@@ -26,16 +26,28 @@
         where id = #{id};
     </select>
 
-    <update id="setName" parameterType="String">
-        update user set name = #{name};
+    <update id="setName">
+        update user
+        set name = #{name}
+        where id = #{id};
     </update>
 
-    <update id="setWord" parameterType="String">
-        update user set word = #{word};
+    <update id="setWord">
+        update user
+        set word = #{word}
+        where id = #{id};
     </update>
 
-    <update id="setAvatar" parameterType="String">
-        update user set avatar = #{avatar};
+    <update id="setAvatar">
+        update user
+        set avatar = #{avatar}
+        where id = #{id};
     </update>
+
+    <select id="search" parameterType="String" resultType="User">
+        select id, name, avatar, word
+        from user
+        where id = #{keyword} OR name like concat('%', #{keyword}, '%');
+    </select>
 
 </mapper>
