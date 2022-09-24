@@ -7,7 +7,15 @@
 
     <insert id="add">
         insert into contact (own, contact)
-        value (#{own}, #{contact});
+            value (#{own}, #{contact});
     </insert>
+
+    <select id="search" resultType="ContactItem">
+        select u.id, name, avatar, word, score, state
+        from (select id, name, avatar, word from user where name like concat('%', #{keyword}, '%')) u,
+             (select id, contact, score, state from contact) c
+        where (u.id = c.id and c.contact = #{id})   /*因为要在本人的好友里search*/
+           or (u.id = c.contact and c.id = #{id});
+    </select>
 
 </mapper>

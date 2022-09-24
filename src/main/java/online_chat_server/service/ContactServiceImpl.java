@@ -2,7 +2,7 @@ package online_chat_server.service;
 
 import online_chat_server.mapper.ContactMapper;
 import online_chat_server.mapper.UserMapper;
-import online_chat_server.pojo.User;
+import online_chat_server.pojo.ContactItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,8 +28,8 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public User[] search(String keyword) {
-        return userMapper.search(keyword);
+    public ContactItem[] search(int id, String keyword) {
+        return contactMapper.search(id, keyword);
     }
 
 }

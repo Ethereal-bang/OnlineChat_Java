@@ -31,14 +31,16 @@
 **Param**: id, val
 **msg**: 修改成功 | 修改失败
 
-## /search/{keyword} 搜索
-根据用户 ID 或昵称匹配
-+ PathVariable: keyword
-+ data.list: Exclude<User, "password">
-
 # Contact 联系人
 库(多对多): id, own, contact, score 亲密度, state
 + state 申请中 | 已同意 | 已拒绝 | 已屏蔽 | 被屏蔽
+
+## /search/{keyword} 搜索用户
++ Param: id 用户 ID
++ PathVariable: 为数字时查询该 ID 用户；不然在用户好友列表中查询昵称
++ data
+  + user 查询 ID
+  + list 查询好友
 
 ## /add 通过ID添加好友
 + Param: id, contact

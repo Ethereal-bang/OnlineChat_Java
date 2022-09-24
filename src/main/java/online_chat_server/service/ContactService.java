@@ -1,11 +1,11 @@
 package online_chat_server.service;
 
-import online_chat_server.pojo.User;
+import online_chat_server.pojo.ContactItem;
 
 public interface ContactService {
 
     boolean add(int id, int contact);
 
-    User[] search(String keyword);
+    ContactItem[] search(int id, String keyword);
 
 }

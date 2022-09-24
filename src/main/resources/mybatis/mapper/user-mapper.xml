@@ -47,7 +47,7 @@
     <select id="search" parameterType="String" resultType="User">
         select id, name, avatar, word
         from user
-        where id = #{keyword} OR name like concat('%', #{keyword}, '%');
+        where id = #{keyword};
     </select>
 
 </mapper>
