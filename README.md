@@ -33,7 +33,7 @@
 
 # Contact 联系人
 库(多对多): id, own, contact, score 亲密度, state
-+ state 申请中 | 已同意 | 已拒绝 | 已屏蔽 | 被屏蔽
++ state 0申请中 | 1已同意 | 2已拒绝 | 已屏蔽 | 被屏蔽
 
 ## /search/{keyword} 搜索用户
 + Param: id 用户 ID
@@ -45,6 +45,12 @@
 ## /add 通过ID添加好友
 + Param: id, contact
 + msg: 已发送好友申请 | 发送好友申请失败
+
+## /getAddList/{id} 好友申请列表(他人的申请)
++ PathVariable: id
+
+## /?agreeAdd 同意添加好友
+
 
 ## /? 删除联系人
 

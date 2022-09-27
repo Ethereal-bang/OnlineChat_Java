@@ -32,4 +32,9 @@ public class ContactServiceImpl implements ContactService {
         return contactMapper.search(id, keyword);
     }
 
+    @Override
+    public ContactItem[] getAddList(int id) {
+        return contactMapper.getAddList(id);
+    }
+
 }

@@ -6,8 +6,6 @@ import online_chat_server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.regex.Pattern;
-
 @RestController
 @RequestMapping("/contact")
 public class ContactController {
@@ -42,6 +40,11 @@ public class ContactController {
             // name 在好友中搜索
             return Result.ok().data("list", contactService.search(id, keyword));
         }
+    }
+
+    @GetMapping("/getAddList/{id}")
+    public Result getAddList(@PathVariable("id") int id) {
+        return Result.ok().data("list", contactService.getAddList(id));
     }
 
 }

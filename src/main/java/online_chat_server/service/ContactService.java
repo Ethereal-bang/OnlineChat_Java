@@ -8,4 +8,6 @@ public interface ContactService {
 
     ContactItem[] search(int id, String keyword);
 
+    ContactItem[] getAddList(int id);
+
 }
