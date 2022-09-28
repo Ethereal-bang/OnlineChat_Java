@@ -24,7 +24,7 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public boolean add(int id, int contact) {
-        return contactMapper.add(id, contact) == 1;
+        return contactMapper.add(id, contact) == 2;
     }
 
     @Override

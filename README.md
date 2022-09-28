@@ -33,7 +33,9 @@
 
 # Contact 联系人
 库(多对多): id, own, contact, score 亲密度, state
-+ state 0申请中 | 1已同意 | 2已拒绝 | 已屏蔽 | 被屏蔽
++ 每对关系有两条记录
++ state(本人主动) 0申请中 | 1已同意 | 2已拒绝 | 3已屏蔽
++ state(本人收到) 4待处理
 
 ## /search/{keyword} 搜索用户
 + Param: id 用户 ID
@@ -48,6 +50,7 @@
 
 ## /getAddList/{id} 好友申请列表(他人的申请)
 + PathVariable: id
++ data-list: ContactItem[]
 
 ## /?agreeAdd 同意添加好友
 

@@ -6,24 +6,23 @@
 <mapper namespace="online_chat_server.mapper.ContactMapper">
 
     <insert id="add">
-        insert into contact (own, contact)
-            value (#{own}, #{contact});
+        insert into contact (own, contact, state)
+            values (#{own}, #{contact}, 0), (#{contact}, #{own}, 4);
     </insert>
 
     <select id="search" resultType="ContactItem">
-        select u.id, name, avatar, word, score, state
+        select c.id, u.id as uid, name, avatar, word, score, state
         from (select id, name, avatar, word from user where name like concat('%', #{keyword}, '%')) u,
-             (select id, contact, score, state from contact) c
-        where (u.id = c.id and c.contact = #{id})   /*因为要在本人的好友里search*/
-           or (u.id = c.contact and c.id = #{id});
+             (select id, own, contact, score, state from contact) c
+        where (c.own = #{id} and c.id = u.id);   /*因为要在本人的好友里search*/
     </select>
 
     <select id="getAddList" parameterType="int" resultType="ContactItem">
-        select own, score, state, name, avatar, word, password
+        select contact.id as id, own as uid, score, state, name, avatar, word, password
         from contact, user
-        where contact = #{id}
-          and state = 0
-          and user.id = contact.own;
+        where own = #{id}
+          and state = 4
+          and user.id = contact.contact;
     </select>
 
 </mapper>
