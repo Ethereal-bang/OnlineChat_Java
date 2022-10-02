@@ -1,6 +1,8 @@
 package online_chat_server.controller;
 
 import online_chat_server.common.Result;
+import online_chat_server.pojo.ContactItem;
+import online_chat_server.pojo.User;
 import online_chat_server.service.ContactService;
 import online_chat_server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +37,10 @@ public class ContactController {
         // 判断参数属于id还是昵称
         if (keyword.matches("[0-9]+")) {
             // id
-            return Result.ok().data("user", userService.getInfo(Integer.parseInt(keyword)));
+            User user = userService.getInfo(Integer.parseInt(keyword));
+            ContactItem contactItem = new ContactItem(1, user.getId(),
+                    user.getName(), user.getAvatar(), user.getWord(), 0, -1);
+            return Result.ok().data("user", contactItem);
         } else {
             // name 在好友中搜索
             return Result.ok().data("list", contactService.search(id, keyword));

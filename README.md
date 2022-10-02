@@ -36,13 +36,14 @@
 + 每对关系有两条记录
 + state(本人主动) 0申请中 | 1已同意 | 2已拒绝 | 3已屏蔽
 + state(本人收到) 4待处理
++ state(不存在于数据库,方便前端展示) -1 未申请
 
 ## /search/{keyword} 搜索用户
 + Param: id 用户 ID
 + PathVariable: 为数字时查询该 ID 用户；不然在用户好友列表中查询昵称
 + data
-  + user 查询 ID
-  + list 查询好友
+  + user 查询 ID (ContactItem)
+  + list 查询好友 (ContactItem[])
 
 ## /add 通过ID添加好友
 + Param: id, contact
