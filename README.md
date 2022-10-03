@@ -72,8 +72,13 @@
 库(多对一): id, sender, receiver, content, word, time
 + ?content富文本,word纯文字便于词云
 
-## /? 与某人聊天记录
+## /?list 消息列表
+
+## /?getDialogue 与某人聊天记录
 Params: own, contact
+
+## /send 发送消息
++ RequestBody: News(sender, receiver, content, word)
 
 # 图片
 

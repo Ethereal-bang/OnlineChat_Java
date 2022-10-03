@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="online_chat_server.mapper.NewsMapper">
+
+    <select id="getDialogue" resultType="News">
+        select id, sender, receiver, content, word, time
+        from news
+        where sender = #{id} or receiver = #{id}
+        ORDER BY time;
+    </select>
+
+    <insert id="add" parameterType="News">
+        insert into news (sender, receiver, content, word)
+        VALUE (#{sender}, #{receiver}, #{content}, #{word});
+    </insert>
+
+</mapper>
