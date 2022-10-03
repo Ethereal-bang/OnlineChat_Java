@@ -53,8 +53,8 @@
 + PathVariable: id
 + data-list: ContactItem[]
 
-## /?agreeAdd 同意添加好友
-
+## /handleApplication 同意/拒绝好友申请
++ Param: id, contact, state: 1 | 2
 
 ## /? 删除联系人
 

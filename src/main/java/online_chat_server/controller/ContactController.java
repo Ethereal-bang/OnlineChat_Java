@@ -52,4 +52,15 @@ public class ContactController {
         return Result.ok().data("list", contactService.getAddList(id));
     }
 
+    @GetMapping("/handleApplication")
+    public Result handleApplication(
+            @RequestParam("id") int id,
+            @RequestParam("contact") int contact,
+            @RequestParam("state") int state) {
+        if (contactService.changeState(id, contact, state)) {
+            return Result.ok();
+        } else {
+            return Result.err();
+        }
+    }
 }

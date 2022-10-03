@@ -37,4 +37,9 @@ public class ContactServiceImpl implements ContactService {
         return contactMapper.getAddList(id);
     }
 
+    @Override
+    public boolean changeState(int id, int contact, int state) {
+        return contactMapper.changeState(id, contact, state);
+    }
+
 }

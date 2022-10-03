@@ -10,4 +10,6 @@ public interface ContactService {
 
     ContactItem[] getAddList(int id);
 
+    boolean changeState(int id, int contact, int state);
+
 }

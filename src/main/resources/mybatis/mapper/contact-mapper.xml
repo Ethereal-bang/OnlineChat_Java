@@ -18,11 +18,18 @@
     </select>
 
     <select id="getAddList" parameterType="int" resultType="ContactItem">
-        select contact.id as id, own as uid, score, state, name, avatar, word, password
+        select contact.id as id, contact.contact as uid, score, state, name, avatar, word, password
         from contact, user
         where own = #{id}
           and state = 4
           and user.id = contact.contact;
     </select>
+
+    <update id="changeState">
+        update contact
+        set state = #{state}
+        where own = #{id} and contact = #{contact}
+            or (own = #{contact} and contact = #{id});
+    </update>
 
 </mapper>
