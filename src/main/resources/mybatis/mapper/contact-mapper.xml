@@ -14,7 +14,7 @@
         select c.id, u.id as uid, name, avatar, word, score, state
         from (select id, name, avatar, word from user where name like concat('%', #{keyword}, '%')) u,
              (select id, own, contact, score, state from contact) c
-        where (c.own = #{id} and c.id = u.id);   /*因为要在本人的好友里search*/
+        where (c.own = #{id} and c.contact = u.id);   /*因为要在本人的好友里search*/
     </select>
 
     <select id="getAddList" parameterType="int" resultType="ContactItem">
@@ -31,5 +31,13 @@
         where own = #{id} and contact = #{contact}
             or (own = #{contact} and contact = #{id});
     </update>
+
+    <select id="list" parameterType="int" resultType="ContactItem">
+        select contact.id as id, contact.contact as uid, score, state, name, avatar, word, password
+        from contact, user
+        where contact.own = 939847757
+          and contact.state = 1  # 已同意
+          and contact.contact = user.id;
+    </select>
 
 </mapper>

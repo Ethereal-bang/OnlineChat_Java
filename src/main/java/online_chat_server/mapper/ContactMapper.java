@@ -15,4 +15,6 @@ public interface ContactMapper {
 
     boolean changeState(int id, int contact, int state);
 
+    ContactItem[] list(int id);
+
 }

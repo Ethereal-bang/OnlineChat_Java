@@ -12,4 +12,6 @@ public interface ContactService {
 
     boolean changeState(int id, int contact, int state);
 
+    ContactItem[] list(int id);
+    
 }

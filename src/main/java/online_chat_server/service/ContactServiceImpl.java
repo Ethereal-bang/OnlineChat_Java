@@ -42,4 +42,9 @@ public class ContactServiceImpl implements ContactService {
         return contactMapper.changeState(id, contact, state);
     }
 
+    @Override
+    public ContactItem[] list(int id) {
+        return contactMapper.list(id);
+    }
+
 }

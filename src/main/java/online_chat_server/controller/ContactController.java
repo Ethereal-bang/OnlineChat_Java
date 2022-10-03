@@ -63,4 +63,10 @@ public class ContactController {
             return Result.err();
         }
     }
+
+    @GetMapping("/list/{id}")
+    public Result list(@PathVariable("id") int id) {
+        return Result.ok().data("list", contactService.list(id));
+    }
+
 }

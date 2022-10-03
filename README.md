@@ -31,7 +31,7 @@
 **Param**: id, val
 **msg**: 修改成功 | 修改失败
 
-# Contact 联系人
+# ContactItem 联系人
 库(多对多): id, own, contact, score 亲密度, state
 + 每对关系有两条记录
 + state(本人主动) 0申请中 | 1已同意 | 2已拒绝 | 3已屏蔽
@@ -60,8 +60,10 @@
 
 ## /? 屏蔽联系人
 
-## /? 联系人列表
-name, avatar, news, time, state
+## /list/{id} 联系人列表
++ PathVariable: id
++ data-list: ContactItem[]
+
 ### ? 全部
 ### ? 按亲密度排行
 ### ? 检索
