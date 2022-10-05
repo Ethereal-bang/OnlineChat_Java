@@ -33,7 +33,7 @@
     </update>
 
     <select id="list" parameterType="int" resultType="ContactItem">
-        select contact.id as id, contact.contact as uid, score, state, name, avatar, word, password
+        select contact.id as id, contact.contact as uid, score, state, news, name, avatar, word, password
         from contact, user
         where contact.own = 939847757
           and contact.state = 1  # 已同意

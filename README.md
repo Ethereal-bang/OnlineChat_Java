@@ -32,7 +32,7 @@
 **msg**: 修改成功 | 修改失败
 
 # ContactItem 联系人
-库(多对多): id, own, contact, score 亲密度, state
+库(多对多): id, own, contact, score 亲密度, state, news
 + 每对关系有两条记录
 + state(本人主动) 0申请中 | 1已同意 | 2已拒绝 | 3已屏蔽
 + state(本人收到) 4待处理
@@ -60,7 +60,7 @@
 
 ## /? 屏蔽联系人
 
-## /list/{id} 联系人列表
+## /list/{id} 联系人列表/消息列表
 + PathVariable: id
 + data-list: ContactItem[]
 

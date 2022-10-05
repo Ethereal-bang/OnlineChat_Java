@@ -15,4 +15,5 @@ public class ContactItem {
     private String word;
     private int score;
     private int state;
+    private String news;
 }
