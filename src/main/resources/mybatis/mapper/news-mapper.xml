@@ -5,12 +5,21 @@
 
 <mapper namespace="online_chat_server.mapper.NewsMapper">
 
-    <select id="getDialogue" resultType="News">
+    <resultMap id="BaseResultMap" type="News">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="sender" jdbcType="INTEGER" property="sender" />
+        <result column="receiver" jdbcType="INTEGER" property="receiver" />
+        <result column="content" jdbcType="VARCHAR" property="content" />
+        <result column="word" jdbcType="VARCHAR" property="word" />
+        <result column="time" jdbcType="TIMESTAMP" property="time" />
+    </resultMap>
+
+    <select id="getDialogue" resultMap="BaseResultMap">
         select id, sender, receiver, content, word, time
         from news
         where sender = #{id} and receiver = #{contact}
            or (sender = #{contact} and receiver = #{id})
-        ORDER BY time DESC;
+        ORDER BY time DESC; # 最近时间优先返回
     </select>
 
     <insert id="add" parameterType="News">
