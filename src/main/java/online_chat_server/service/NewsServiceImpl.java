@@ -31,8 +31,8 @@ public class NewsServiceImpl implements NewsService{
     }
 
     @Override
-    public News[] getDialogue(int id) {
-        return newsMapper.getDialogue(id);
+    public News[] getDialogue(int id, int contact) {
+        return newsMapper.getDialogue(id, contact);
     }
 
 }

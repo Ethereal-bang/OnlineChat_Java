@@ -6,6 +6,6 @@ public interface NewsService {
 
     boolean send(News news);
 
-    News[] getDialogue(int id);
+    News[] getDialogue(int id, int contact);
 
 }

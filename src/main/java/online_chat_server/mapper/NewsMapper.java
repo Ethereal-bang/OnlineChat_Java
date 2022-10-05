@@ -8,6 +8,6 @@ public interface NewsMapper {
 
     int add(News news);
 
-    News[] getDialogue(int id);
+    News[] getDialogue(int id, int contact);
 
 }

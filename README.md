@@ -30,6 +30,7 @@
 **PathVariable**: name | word | avatar
 **Param**: id, val
 **msg**: 修改成功 | 修改失败
++ To fix: ws 通知前端更新
 
 # ContactItem 联系人
 库(多对多): id, own, contact, score 亲密度, state, news, time
@@ -75,8 +76,9 @@
 
 ## /?list 消息列表
 
-## /?getDialogue 与某人聊天记录
-Params: own, contact
+## /getDialogue 与某人聊天记录
++ Params: own, contact
++ data: {list: News[], user: User}
 
 ## /send 发送消息
 新增到 News，并更新 Contact news, time 字段

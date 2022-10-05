@@ -8,8 +8,9 @@
     <select id="getDialogue" resultType="News">
         select id, sender, receiver, content, word, time
         from news
-        where sender = #{id} or receiver = #{id}
-        ORDER BY time;
+        where sender = #{id} and receiver = #{contact}
+           or (sender = #{contact} and receiver = #{id})
+        ORDER BY time DESC;
     </select>
 
     <insert id="add" parameterType="News">
