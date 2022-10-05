@@ -17,4 +17,6 @@ public interface ContactMapper {
 
     ContactItem[] list(int id);
 
+    int updateNews(int id, String news);
+
 }

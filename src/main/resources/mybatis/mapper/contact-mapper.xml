@@ -40,4 +40,10 @@
           and contact.contact = user.id;
     </select>
 
+    <update id="updateNews">
+        update contact
+        set news = #{news}, time = current_timestamp
+        where own = #{id} or contact = #{id};
+    </update>
+
 </mapper>

@@ -32,7 +32,8 @@
 **msg**: 修改成功 | 修改失败
 
 # ContactItem 联系人
-库(多对多): id, own, contact, score 亲密度, state, news
+库(多对多): id, own, contact, score 亲密度, state, news, time
++ news, time 最后一次消息和时间
 + 每对关系有两条记录
 + state(本人主动) 0申请中 | 1已同意 | 2已拒绝 | 3已屏蔽
 + state(本人收到) 4待处理
@@ -78,6 +79,7 @@
 Params: own, contact
 
 ## /send 发送消息
+新增到 News，并更新 Contact news, time 字段
 + RequestBody: News(sender, receiver, content, word)
 
 # 图片
