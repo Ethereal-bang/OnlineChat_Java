@@ -83,6 +83,7 @@
 ## /send 发送消息
 新增到 News，并更新 Contact news, time 字段
 + RequestBody: News(sender, receiver, content, word)
++ data-id: 该消息记录id
 
 # 图片
 

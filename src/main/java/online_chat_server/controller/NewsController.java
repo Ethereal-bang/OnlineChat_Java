@@ -27,9 +27,10 @@ public class NewsController {
     @PostMapping("/send")
     public Result send(@RequestBody News news) {
         if (newsService.send(news)) {
-            return Result.ok();
+            return Result.ok().data("id", news.getId());
+        } else {
+            return Result.err();
         }
-        return Result.err();
     }
 
     @GetMapping("/getDialogue")

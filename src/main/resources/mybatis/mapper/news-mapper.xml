@@ -22,7 +22,7 @@
         ORDER BY time DESC; # 最近时间优先返回
     </select>
 
-    <insert id="add" parameterType="News">
+    <insert id="add" parameterType="News" keyProperty="id" useGeneratedKeys="true">
         insert into news (sender, receiver, content, word)
         VALUE (#{sender}, #{receiver}, #{content}, #{word});
     </insert>
