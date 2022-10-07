@@ -85,6 +85,11 @@
 + RequestBody: News(sender, receiver, content, word)
 + data-id: 该消息记录id
 
-# 图片
+# /images 图片
 
-## / 请求 static 文件夹下图片
+## /upload 上传
++ POST
++ RequestParam: file
++ data-path: 图片访问路径
+
+## /{图片名} 请求文件

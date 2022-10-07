@@ -19,6 +19,4 @@ public interface UserService {
 
     boolean setAvatar(int id, String avatar);
 
-    String upload(MultipartFile multipartFile);
-
 }

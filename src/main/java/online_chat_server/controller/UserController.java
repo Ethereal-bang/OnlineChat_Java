@@ -5,9 +5,6 @@ import online_chat_server.pojo.User;
 import online_chat_server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/user")
@@ -64,18 +61,5 @@ public class UserController {
                 ? Result.ok().setMsg("修改成功")
                 : Result.err().setMsg("修改失败");
     }
-
-    @PostMapping("/upload")
-    public Result uploadFile(@RequestParam("file") MultipartFile multipartFile) {
-        if (multipartFile.isEmpty()) {
-            return Result.err().setMsg("文件为空");
-        } else {
-            String path = userService.upload(multipartFile);
-            return !Objects.equals(path, "")
-                ? Result.ok().setMsg("上传成功").data("path", path)
-                : Result.err().setMsg("上传失败");
-        }
-    }
-
 
 }
