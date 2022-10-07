@@ -16,11 +16,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping("")
-    public String test() {
-        return "success";
-    }
-
     @GetMapping("/login")
     public Result login(User user) {
         if (userService.isExist(user.getId())) {
