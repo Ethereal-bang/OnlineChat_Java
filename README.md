@@ -33,8 +33,9 @@
 + To fix: ws 通知前端更新
 
 # ContactItem 联系人
-库(多对多): id, own, contact, score 亲密度, state, news, time
+库(多对多): id, own, contact, score 亲密度, state, news, time, read
 + news, time 最后一次消息和时间
++ read <span style="color:orange">对方</span>是否已读消息
 + 每对关系有两条记录
 + state(本人主动) 0申请中 | 1已同意 | 2已拒绝 | 3已屏蔽
 + state(本人收到) 4待处理
@@ -77,6 +78,7 @@
 ## /?list 消息列表
 
 ## /getDialogue 与某人聊天记录
+并将对方 read 置为 true
 + Params: own, contact
 + data: {list: News[], user: User}
 
@@ -93,3 +95,7 @@
 + data-path: 图片访问路径
 
 ## /{图片名} 请求文件
+
+## /? 上传表情包
+
+## /? 用户的表情包

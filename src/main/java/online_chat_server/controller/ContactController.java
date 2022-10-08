@@ -39,7 +39,7 @@ public class ContactController {
             // id
             User user = userService.getInfo(Integer.parseInt(keyword));
             ContactItem contactItem = new ContactItem(1, user.getId(),
-                    user.getName(), user.getAvatar(), user.getWord(), 0, -1, "");
+                    user.getName(), user.getAvatar(), user.getWord(), 0, -1, "", false);
             return Result.ok().data("user", contactItem);
         } else {
             // name 在好友中搜索

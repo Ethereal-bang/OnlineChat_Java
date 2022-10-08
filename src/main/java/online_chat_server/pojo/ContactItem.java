@@ -16,4 +16,5 @@ public class ContactItem {
     private int score;
     private int state;
     private String news;
+    private boolean read;
 }

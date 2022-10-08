@@ -32,6 +32,8 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public News[] getDialogue(int id, int contact) {
+        // 将对方已读置为true
+        contactMapper.updateRead(contact, id);
         return newsMapper.getDialogue(id, contact);
     }
 
