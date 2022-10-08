@@ -19,6 +19,6 @@ public interface ContactMapper {
 
     int updateNews(int id, String news);
 
-    int updateRead(int id, int contact);
+    int updateRead(int id, int contact, boolean bool);
 
 }

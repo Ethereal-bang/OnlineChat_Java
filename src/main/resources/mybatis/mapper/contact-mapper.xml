@@ -48,7 +48,7 @@
 
     <update id="updateRead">
         update contact
-        set `read` = true
+        set `read` = #{bool}
         where own = #{id} and contact = #{contact};
     </update>
 

@@ -24,16 +24,18 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public boolean send(News news) {
-        // 1.消息库新增
+        // 消息库新增
         if (newsMapper.add(news) != 1) return false;
-        // 2.更新联系人最近一次联系
+        // 将对方已读置为false
+        contactMapper.updateRead(news.getSender(), news.getReceiver(), false);
+        // 更新联系人最近一次联系
         return contactMapper.updateNews(news.getSender(), news.getWord()) == 2;
     }
 
     @Override
     public News[] getDialogue(int id, int contact) {
         // 将对方已读置为true
-        contactMapper.updateRead(contact, id);
+        contactMapper.updateRead(contact, id, true);
         return newsMapper.getDialogue(id, contact);
     }
 
