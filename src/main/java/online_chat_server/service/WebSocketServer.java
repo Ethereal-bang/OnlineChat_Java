@@ -1,11 +1,10 @@
 package online_chat_server.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import online_chat_server.common.WsNews;
 import org.springframework.stereotype.Component;
 
-import javax.websocket.OnClose;
-import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
-import javax.websocket.Session;
+import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
@@ -44,9 +43,12 @@ public class WebSocketServer {
         System.out.println("来自客户端的消息:" + message);
     }
 
-    public void sendMessage(String message, int id) throws IOException {
+    public void sendMessage(int id, WsNews news) throws IOException {
         if (electricSocketMap.containsKey(id)) {    // 如果对方在线，发送
-            electricSocketMap.get(id).getBasicRemote().sendText(message);
+            // 转换成JSON格式后发送
+            ObjectMapper mapper = new ObjectMapper();
+            String script = mapper.writeValueAsString(news);
+            electricSocketMap.get(id).getBasicRemote().sendText(script);
         }
     }
 }

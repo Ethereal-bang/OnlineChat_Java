@@ -7,6 +7,7 @@ import online_chat_server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.EncodeException;
 import java.io.IOException;
 
 @RestController
@@ -27,7 +28,7 @@ public class NewsController {
     }
 
     @PostMapping("/send")
-    public Result send(@RequestBody News news) throws IOException {
+    public Result send(@RequestBody News news) throws IOException, EncodeException {
         if (newsService.send(news)) {
             return Result.ok().data("id", news.getId());
         } else {

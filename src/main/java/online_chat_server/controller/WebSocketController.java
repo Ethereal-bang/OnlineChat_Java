@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.websocket.EncodeException;
 import java.io.IOException;
 
 @Controller
@@ -21,7 +22,6 @@ public class WebSocketController {
     }
 
     @GetMapping("/{uid}")
-    public void webSocket(@PathVariable("uid") int uid) throws IOException {
-        webSocketServer.sendMessage("test", uid);
+    public void webSocket(@PathVariable("uid") int uid) {
     }
 }
