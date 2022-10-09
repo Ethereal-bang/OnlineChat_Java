@@ -6,11 +6,14 @@ import online_chat_server.pojo.News;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 @Service
 public class NewsServiceImpl implements NewsService {
 
     private NewsMapper newsMapper;
     private ContactMapper contactMapper;
+    private WebSocketServer webSocketServer;
 
     @Autowired
     public void setNewsMapper(NewsMapper newsMapper) {
@@ -22,12 +25,19 @@ public class NewsServiceImpl implements NewsService {
         this.contactMapper = contactMapper;
     }
 
+    @Autowired
+    public void setWebSocketServer(WebSocketServer webSocketServer) {
+        this.webSocketServer = webSocketServer;
+    }
+
     @Override
-    public boolean send(News news) {
+    public boolean send(News news) throws IOException {
         // 消息库新增
         if (newsMapper.add(news) != 1) return false;
         // 将对方已读置为false
         contactMapper.updateRead(news.getSender(), news.getReceiver(), false);
+        // ws提示对方新消息
+        webSocketServer.sendMessage("您有一条新消息", news.getReceiver());
         // 更新联系人最近一次联系
         return contactMapper.updateNews(news.getSender(), news.getWord()) == 2;
     }

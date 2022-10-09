@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class WebSocketServer {
 
     // 线程安全?Set 存放每个客户端对应的ws对象
-    private static Map<Integer, Session> electricSocketMap = new ConcurrentHashMap<>();
+    private static final Map<Integer, Session> electricSocketMap = new ConcurrentHashMap<>();
 
     // 与某客户端的连接对话
     private Session session;
@@ -45,6 +45,8 @@ public class WebSocketServer {
     }
 
     public void sendMessage(String message, int id) throws IOException {
-        electricSocketMap.get(id).getBasicRemote().sendText(message);
+        if (electricSocketMap.containsKey(id)) {    // 如果对方在线，发送
+            electricSocketMap.get(id).getBasicRemote().sendText(message);
+        }
     }
 }

@@ -7,6 +7,8 @@ import online_chat_server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/news")
 public class NewsController {
@@ -25,7 +27,7 @@ public class NewsController {
     }
 
     @PostMapping("/send")
-    public Result send(@RequestBody News news) {
+    public Result send(@RequestBody News news) throws IOException {
         if (newsService.send(news)) {
             return Result.ok().data("id", news.getId());
         } else {
