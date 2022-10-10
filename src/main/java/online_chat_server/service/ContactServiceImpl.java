@@ -32,7 +32,8 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public boolean add(int id, int contact) {
+    public boolean add(int id, int contact) throws IOException {
+        webSocketServer.sendMessage(contact, new WsNews("application", "您有新的好友申请"));
         return contactMapper.add(id, contact) == 2;
     }
 

@@ -28,7 +28,7 @@ public class ContactController {
     }
 
     @GetMapping("/add")
-    public Result addContact(@RequestParam("id") int id, @RequestParam("contact") int contact) {
+    public Result addContact(@RequestParam("id") int id, @RequestParam("contact") int contact) throws IOException {
         return contactService.add(id, contact)
             ? Result.ok().setMsg("已发送好友申请")
             : Result.err().setMsg("发送好友申请失败");

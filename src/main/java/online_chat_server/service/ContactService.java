@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public interface ContactService {
 
-    boolean add(int id, int contact);
+    boolean add(int id, int contact) throws IOException;
 
     ContactItem[] search(int id, String keyword);
 
