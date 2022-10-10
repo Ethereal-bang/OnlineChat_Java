@@ -7,8 +7,8 @@ import online_chat_server.pojo.News;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.websocket.EncodeException;
 import java.io.IOException;
+import java.util.Date;
 
 @Service
 public class NewsServiceImpl implements NewsService {
@@ -39,10 +39,12 @@ public class NewsServiceImpl implements NewsService {
         // 将对方已读置为false
         contactMapper.updateRead(news.getSender(), news.getReceiver(), false);
         // ws提示对方新消息
+        news.setTime(new Date());
         webSocketServer.sendMessage(
                 news.getReceiver(),
                 new WsNews( "news", "您有一条新消息")
                         .data("id", news.getSender())
+                        .data("news", news)
                         .data("word", news.getWord()));
         // 更新联系人最近一次联系
         return contactMapper.updateNews(news.getSender(), news.getWord()) == 2;
