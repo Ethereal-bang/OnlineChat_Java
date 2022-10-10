@@ -1,16 +1,20 @@
 package online_chat_server.service;
 
+import online_chat_server.common.WsNews;
 import online_chat_server.mapper.ContactMapper;
 import online_chat_server.mapper.UserMapper;
 import online_chat_server.pojo.ContactItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 @Service
 public class ContactServiceImpl implements ContactService {
 
     ContactMapper contactMapper;
     UserMapper userMapper;
+    private WebSocketServer webSocketServer;
 
     @Autowired
     public void setContactMapper(ContactMapper contactMapper) {
@@ -20,6 +24,11 @@ public class ContactServiceImpl implements ContactService {
     @Autowired
     public void setUserMapper(UserMapper userMapper) {
         this.userMapper = userMapper;
+    }
+
+    @Autowired
+    public void setWebSocketServer(WebSocketServer webSocketServer) {
+        this.webSocketServer = webSocketServer;
     }
 
     @Override
@@ -38,7 +47,10 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public boolean changeState(int id, int contact, int state) {
+    public boolean changeState(int id, int contact, int state) throws IOException {
+        // 给对方发送ws
+        String msg = state == 1 ? "您的好友申请已被接受" : "您的好友申请已被拒绝";
+        webSocketServer.sendMessage(contact, new WsNews( "application", msg));
         return contactMapper.changeState(id, contact, state);
     }
 

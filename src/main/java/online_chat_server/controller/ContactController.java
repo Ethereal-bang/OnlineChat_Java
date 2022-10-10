@@ -8,6 +8,8 @@ import online_chat_server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/contact")
 public class ContactController {
@@ -56,7 +58,7 @@ public class ContactController {
     public Result handleApplication(
             @RequestParam("id") int id,
             @RequestParam("contact") int contact,
-            @RequestParam("state") int state) {
+            @RequestParam("state") int state) throws IOException {
         if (contactService.changeState(id, contact, state)) {
             return Result.ok();
         } else {
