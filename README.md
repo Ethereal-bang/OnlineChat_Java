@@ -59,15 +59,16 @@
 ## /handleApplication 同意/拒绝好友申请
 + Param: id, contact, state: 1 | 2
 
-## /? 删除联系人
+## /delete 删除联系人
++ PathParam: id, contact
++ data-msg: 删除成功 | 删除失败
 
-## /? 屏蔽联系人
+## /block 屏蔽联系人
 
 ## /list/{id} 联系人列表/消息列表
 + PathVariable: id
 + data-list: ContactItem[]
 
-### ? 全部
 ### ? 按亲密度排行
 ### ? 检索
 

@@ -49,15 +49,22 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public boolean changeState(int id, int contact, int state) throws IOException {
-        // 给对方发送ws
-        String msg = state == 1 ? "您的好友申请已被接受" : "您的好友申请已被拒绝";
-        webSocketServer.sendMessage(contact, new WsNews( "application", msg));
+        // 给对方发送ws(屏蔽不发)
+        if (state == 1 || state == 2) {
+            String msg = state == 1 ? "您的好友申请已被接受" : "您的好友申请已被拒绝";
+            webSocketServer.sendMessage(contact, new WsNews( "application", msg));
+        }
         return contactMapper.changeState(id, contact, state);
     }
 
     @Override
     public ContactItem[] list(int id) {
         return contactMapper.list(id);
+    }
+
+    @Override
+    public boolean delete(int id, int contact) {
+        return contactMapper.delete(id, contact) >= 2;
     }
 
 }

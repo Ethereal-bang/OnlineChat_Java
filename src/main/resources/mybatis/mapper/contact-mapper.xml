@@ -52,4 +52,10 @@
         where own = #{id} and contact = #{contact};
     </update>
 
+    <delete id="delete">
+        delete from contact
+        where own = #{id} and contact = #{contact}
+            or (own = #{contact} and contact = #{id})
+    </delete>
+
 </mapper>

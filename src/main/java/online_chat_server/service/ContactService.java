@@ -15,5 +15,7 @@ public interface ContactService {
     boolean changeState(int id, int contact, int state) throws IOException;
 
     ContactItem[] list(int id);
-    
+
+    boolean delete(int id, int contact);
+
 }

@@ -71,4 +71,21 @@ public class ContactController {
         return Result.ok().data("list", contactService.list(id));
     }
 
+    @GetMapping("/delete")
+    public Result delete(@RequestParam("id") int id, @RequestParam("contact") int contact) {
+        if (contactService.delete(id, contact)) {
+            return Result.ok().setMsg("删除成功");
+        } else {
+            return Result.err().setMsg("删除失败");
+        }
+    }
+
+    @GetMapping("/block")
+    public Result block(@RequestParam("id") int id, @RequestParam("contact") int contact) throws IOException {
+        if (contactService.changeState(id, contact, 3)) {
+            return Result.ok().setMsg("已屏蔽");
+        } else {
+            return Result.err();
+        }
+    }
 }

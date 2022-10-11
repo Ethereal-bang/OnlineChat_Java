@@ -21,4 +21,6 @@ public interface ContactMapper {
 
     int updateRead(int id, int contact, boolean bool);
 
+    int delete(int id, int contact);
+
 }
