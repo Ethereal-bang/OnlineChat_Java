@@ -64,6 +64,7 @@
 + data-msg: 删除成功 | 删除失败
 
 ## /block 屏蔽联系人
+屏蔽后仍能发消息但不会接收到对方消息
 
 ## /list/{id} 联系人列表/消息列表
 + PathVariable: id

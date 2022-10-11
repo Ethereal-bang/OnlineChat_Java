@@ -9,7 +9,9 @@ public interface ContactMapper {
 
     int add(@Param("own") int id, @Param("contact") int contact);
 
-    ContactItem[] search(int id, String keyword);
+    ContactItem[] searchByName(int id, String keyword);
+
+    ContactItem[] searchByContact(int id, int contact);
 
     ContactItem[] getAddList(int id);
 

@@ -36,18 +36,23 @@ public class NewsServiceImpl implements NewsService {
     public boolean send(News news) throws IOException {
         // 消息库新增
         if (newsMapper.add(news) != 1) return false;
-        // 将对方已读置为false
-        contactMapper.updateRead(news.getSender(), news.getReceiver(), false);
-        // ws提示对方新消息
-        news.setTime(new Date());
-        webSocketServer.sendMessage(
-                news.getReceiver(),
-                new WsNews( "news", "您有一条新消息")
-                        .data("id", news.getSender())
-                        .data("news", news)
-                        .data("word", news.getWord()));
-        // 更新联系人最近一次联系
-        return contactMapper.updateNews(news.getSender(), news.getWord()) == 2;
+        // 是否被对方屏蔽
+        if (contactMapper.searchByContact(news.getReceiver(), news.getSender())[0].getState() == 3) {
+            return true;
+        } else {
+            // 将对方已读置为false
+            contactMapper.updateRead(news.getSender(), news.getReceiver(), false);
+            // ws提示对方新消息
+            news.setTime(new Date());
+            webSocketServer.sendMessage(
+                    news.getReceiver(),
+                    new WsNews( "news", "您有一条新消息")
+                            .data("id", news.getSender())
+                            .data("news", news)
+                            .data("word", news.getWord()));
+            // 更新联系人最近一次联系
+            return contactMapper.updateNews(news.getSender(), news.getWord()) == 2;
+        }
     }
 
     @Override

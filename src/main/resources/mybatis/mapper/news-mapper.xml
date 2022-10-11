@@ -15,10 +15,15 @@
     </resultMap>
 
     <select id="getDialogue" resultMap="BaseResultMap">
-        select id, sender, receiver, content, word, time
-        from news
+        select news.id, sender, receiver, content, word, news.time
+        from news, contact
         where sender = #{id} and receiver = #{contact}
-           or (sender = #{contact} and receiver = #{id})
+           or (sender = #{contact} and receiver = #{id}     # 对方未被我屏蔽才能接收到
+                   and (contact.contact = #{contact}
+                       and contact.own = #{id}
+                       and contact.state != 3
+                       )
+               )
         ORDER BY time DESC; # 最近时间优先返回
     </select>
 

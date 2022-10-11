@@ -39,7 +39,7 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public ContactItem[] search(int id, String keyword) {
-        return contactMapper.search(id, keyword);
+        return contactMapper.searchByName(id, keyword);
     }
 
     @Override
