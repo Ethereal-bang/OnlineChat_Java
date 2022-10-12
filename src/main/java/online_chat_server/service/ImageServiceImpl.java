@@ -1,6 +1,7 @@
 package online_chat_server.service;
 
 import online_chat_server.mapper.ImageMapper;
+import online_chat_server.pojo.Image;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -44,6 +45,11 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public boolean add(String path, int uid) {
         return imageMapper.add(path, uid) == 1;
+    }
+
+    @Override
+    public String[] list(int uid) {
+        return imageMapper.list(uid);
     }
 
 }

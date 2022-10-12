@@ -43,4 +43,9 @@ public class ImageController {
         }
     }
 
+    @GetMapping("/emoji/{uid}")
+    public Result list(@PathVariable("uid") int uid) {
+        return Result.ok().data("list", imageService.list(uid));
+    }
+
 }

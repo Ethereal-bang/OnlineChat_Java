@@ -10,4 +10,10 @@
         value (#{path}, #{uid});
     </insert>
 
+    <select id="list" parameterType="int" resultType="String">
+        select path
+        from image
+        where uid = #{uid};
+    </select>
+
 </mapper>

@@ -104,7 +104,9 @@
 + PathVariables: uid
 + data-path: 图片路径
 
-## /?emoji/{uid} 用户的表情包
+## /emoji/{uid} 用户的表情包
++ PathVariables: uid
++ data-list: 路径[]
 
 # Websocket
 **事件类型：**
