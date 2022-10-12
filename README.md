@@ -98,11 +98,15 @@
 
 ## /{图片名} 请求文件
 
-## /? 上传表情包
+## /uploadEmoji/{uid} 上传用户表情包
++ POST
++ Params: file
++ PathVariables: uid
++ data-path: 图片路径
 
-## /? 用户的表情包
+## /?emoji/{uid} 用户的表情包
 
 # Websocket
 **事件类型：**
 news: 新消息
-application: 好友申请 
+application: 好友申请

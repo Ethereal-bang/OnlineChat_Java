@@ -1,5 +1,7 @@
 package online_chat_server.service;
 
+import online_chat_server.mapper.ImageMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -8,7 +10,14 @@ import java.io.IOException;
 import java.util.UUID;
 
 @Service
-public class ImgServiceImpl implements ImgService {
+public class ImageServiceImpl implements ImageService {
+
+    private ImageMapper imageMapper;
+
+    @Autowired
+    public void setImageMapper(ImageMapper imageMapper) {
+        this.imageMapper = imageMapper;
+    }
 
     @Override
     public String upload(MultipartFile multipartFile) {
@@ -30,6 +39,11 @@ public class ImgServiceImpl implements ImgService {
             e.printStackTrace();
         }
         return "";
+    }
+
+    @Override
+    public boolean add(String path, int uid) {
+        return imageMapper.add(path, uid) == 1;
     }
 
 }
