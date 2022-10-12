@@ -70,14 +70,15 @@
 + PathVariable: id
 + data-list: ContactItem[]
 
-### ? 按亲密度排行
+### /list/rank 按亲密度排行
++ Params: id
++ data-list: ContactItem[]
+
 ### ? 检索
 
 # News 消息
 库(多对一): id, sender, receiver, content, word, time
 + ?content富文本,word纯文字便于词云
-
-## /?list 消息列表
 
 ## /getDialogue 与某人聊天记录
 并将对方 read 置为 true

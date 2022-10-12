@@ -67,4 +67,9 @@ public class ContactServiceImpl implements ContactService {
         return contactMapper.delete(id, contact) >= 2;
     }
 
+    @Override
+    public ContactItem[] rank(int id) {
+        return contactMapper.rank(id);
+    }
+
 }

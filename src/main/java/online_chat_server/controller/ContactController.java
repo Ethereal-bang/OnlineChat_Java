@@ -88,4 +88,10 @@ public class ContactController {
             return Result.err();
         }
     }
+
+    @GetMapping("/list/rank")
+    public Result rank(@RequestParam("id") int id) {
+        return Result.ok().data("list", contactService.rank(id));
+    }
+
 }

@@ -66,4 +66,13 @@
             or (own = #{contact} and contact = #{id})
     </delete>
 
+    <select id="rank" parameterType="int" resultType="ContactItem">
+        select contact.id as id, contact.contact as uid, score, state, news, contact.`read`, name, avatar, word, password
+        from contact, user
+        where contact.own = #{id}
+          and (contact.state = 1 or contact.state = 3)  # 已同意/已屏蔽
+          and contact.contact = user.id
+        order by score DESC;
+    </select>
+
 </mapper>

@@ -25,4 +25,6 @@ public interface ContactMapper {
 
     int delete(int id, int contact);
 
+    ContactItem[] rank(int id);
+
 }
