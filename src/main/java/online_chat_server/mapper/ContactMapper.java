@@ -27,4 +27,6 @@ public interface ContactMapper {
 
     ContactItem[] rank(int id);
 
+    int addScore(int score, int own, int contact);
+
 }

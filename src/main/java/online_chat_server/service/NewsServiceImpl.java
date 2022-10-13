@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Service
@@ -40,10 +41,12 @@ public class NewsServiceImpl implements NewsService {
         if (contactMapper.searchByContact(news.getReceiver(), news.getSender())[0].getState() == 3) {
             return true;
         } else {
+            // 增加亲密度
+            contactMapper.addScore(1, news.getSender(), news.getReceiver());
             // 将对方已读置为false
             contactMapper.updateRead(news.getSender(), news.getReceiver(), false);
             // ws提示对方新消息
-            news.setTime(new Date());
+            news.setTime(new Timestamp(new Date().getTime()));
             webSocketServer.sendMessage(
                     news.getReceiver(),
                     new WsNews( "news", "您有一条新消息")

@@ -75,4 +75,11 @@
         order by score DESC;
     </select>
 
+    <update id="addScore">
+        update contact
+        set score = score + #{score}
+        where own = #{own} and contact = #{contact}
+            or (own = #{contact} and contact = #{own});
+    </update>
+
 </mapper>
