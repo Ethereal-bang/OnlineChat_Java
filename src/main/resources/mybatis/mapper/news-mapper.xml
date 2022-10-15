@@ -5,17 +5,8 @@
 
 <mapper namespace="online_chat_server.mapper.NewsMapper">
 
-    <resultMap id="BaseResultMap" type="News">
-        <result column="id" jdbcType="INTEGER" property="id" />
-        <result column="sender" jdbcType="INTEGER" property="sender" />
-        <result column="receiver" jdbcType="INTEGER" property="receiver" />
-        <result column="content" jdbcType="VARCHAR" property="content" />
-        <result column="word" jdbcType="VARCHAR" property="word" />
-        <result column="time" jdbcType="TIMESTAMP" property="time" />
-    </resultMap>
-
-    <select id="getDialogue" resultMap="BaseResultMap">
-        select distinct news.id, sender, receiver, content, word, news.time
+    <select id="getDialogue" resultType="News">
+        select distinct news.id, sender, receiver, content, news.time
         from news, contact
         where sender = #{id} and receiver = #{contact}
            or (sender = #{contact} and receiver = #{id}     # 对方未被我屏蔽才能接收到
@@ -28,8 +19,8 @@
     </select>
 
     <insert id="add" parameterType="News" keyProperty="id" useGeneratedKeys="true">
-        insert into news (sender, receiver, content, word)
-        VALUE (#{sender}, #{receiver}, #{content}, #{word});
+        insert into news (sender, receiver, content)
+        VALUE (#{sender}, #{receiver}, #{content});
     </insert>
 
 </mapper>

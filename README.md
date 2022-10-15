@@ -77,8 +77,7 @@
 ### ? 检索
 
 # News 消息
-库(多对一): id, sender, receiver, content, word, time
-+ ?content富文本,word纯文字便于词云
+库(多对一): id, sender, receiver, content(html格式), time
 
 ## /getDialogue 与某人聊天记录
 并将对方 read 置为 true
@@ -87,7 +86,7 @@
 
 ## /send 发送消息
 新增到 News，并更新 Contact news, time 字段
-+ RequestBody: News(sender, receiver, content, word)
++ RequestBody: News(sender, receiver, content)
 + data-id: 该消息记录id
 
 # /images 图片

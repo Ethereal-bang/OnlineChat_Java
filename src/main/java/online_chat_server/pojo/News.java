@@ -14,8 +14,7 @@ public class News {
     private int id;
     private int sender;
     private int receiver;
-    private String content; // markdown
-    private String word;    // 纯文本
+    private String content; // 消息html格式
     private Timestamp time;
 
     public String getTime() {

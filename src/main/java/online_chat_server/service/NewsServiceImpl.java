@@ -52,9 +52,9 @@ public class NewsServiceImpl implements NewsService {
                     new WsNews( "news", "您有一条新消息")
                             .data("id", news.getSender())
                             .data("news", news)
-                            .data("word", news.getWord()));
+                            .data("word", news.getContent()));
             // 更新联系人最近一次联系
-            return contactMapper.updateNews(news.getSender(), news.getWord()) == 2;
+            return contactMapper.updateNews(news.getSender(), news.getContent()) == 2;
         }
     }
 
