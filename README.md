@@ -82,7 +82,7 @@
 
 ## /getDialogue 与某人聊天记录
 并将对方 read 置为 true
-+ Params: own, contact
++ Params: id, contact
 + data: {list: News[], user: User}
 
 ## /send 发送消息
