@@ -54,7 +54,7 @@ public class ContactServiceImpl implements ContactService {
             String msg = state == 1 ? "您的好友申请已被接受" : "您的好友申请已被拒绝";
             webSocketServer.sendMessage(contact, new WsNews( "application", msg));
         }
-        return contactMapper.changeState(id, contact, state);
+        return contactMapper.changeState(id, contact, state) >= 1;
     }
 
     @Override
