@@ -45,7 +45,8 @@
         from contact, user
         where contact.own = #{id}
           and (contact.state = 1 or contact.state = 3)  # 已同意/已屏蔽
-          and contact.contact = user.id;
+          and contact.contact = user.id
+        order by time DESC;
     </select>
 
     <update id="updateNews">
