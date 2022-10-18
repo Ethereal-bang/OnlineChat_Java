@@ -54,7 +54,7 @@ public class NewsServiceImpl implements NewsService {
                             .data("news", news)
                             .data("word", news.getContent()));
             // 更新联系人最近一次联系
-            return contactMapper.updateNews(news.getSender(), news.getContent()) == 2;
+            return contactMapper.updateNews(news.getSender(), news.getContent(), news.getReceiver()) == 2;
         }
     }
 

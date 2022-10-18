@@ -52,7 +52,8 @@
     <update id="updateNews">
         update contact
         set news = #{news}, time = current_timestamp
-        where own = #{id} or contact = #{id};
+        where own = #{id} and contact = #{contact}
+           or (contact = #{id} and own = #{contact});
     </update>
 
     <update id="updateRead">

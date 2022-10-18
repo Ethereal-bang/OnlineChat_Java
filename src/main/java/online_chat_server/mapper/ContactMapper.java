@@ -19,7 +19,7 @@ public interface ContactMapper {
 
     ContactItem[] list(int id);
 
-    int updateNews(int id, String news);
+    int updateNews(int id, String news, int contact);
 
     int updateRead(int id, int contact, boolean bool);
 
