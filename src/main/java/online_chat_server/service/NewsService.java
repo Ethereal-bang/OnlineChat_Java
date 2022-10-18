@@ -10,6 +10,6 @@ public interface NewsService {
 
     boolean send(News news) throws IOException, EncodeException;
 
-    News[] getDialogue(int id, int contact);
+    News[] getDialogue(int id, int contact) throws IOException;
 
 }

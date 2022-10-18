@@ -37,7 +37,7 @@ public class NewsController {
     }
 
     @GetMapping("/getDialogue")
-    public Result getDialogue(@RequestParam("id") int id, @RequestParam("contact") int contact) {
+    public Result getDialogue(@RequestParam("id") int id, @RequestParam("contact") int contact) throws IOException {
         return Result.ok()
                 .data("user", userService.getInfo(contact))
                 .data("list", newsService.getDialogue(id, contact));
