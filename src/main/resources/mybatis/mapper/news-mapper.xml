@@ -15,7 +15,8 @@
                        and contact.state != 3
                        )
                )
-        ORDER BY time DESC; # 最近时间优先返回
+        ORDER BY time DESC  # 最近时间优先返回
+        LIMIT #{offset}, 8; # 从第1+offset条开始返回8条消息
     </select>
 
     <insert id="add" parameterType="News" keyProperty="id" useGeneratedKeys="true">

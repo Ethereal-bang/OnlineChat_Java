@@ -36,10 +36,14 @@ public class NewsController {
         }
     }
 
-    @GetMapping("/getDialogue")
-    public Result getDialogue(@RequestParam("id") int id, @RequestParam("contact") int contact) throws IOException {
+    @GetMapping("/getDialogue/{page}")
+    public Result getDialogue(
+            @RequestParam("id") int id,
+            @RequestParam("contact") int contact,
+            @PathVariable("page") int page
+    ) throws IOException {
         return Result.ok()
                 .data("user", userService.getInfo(contact))
-                .data("list", newsService.getDialogue(id, contact));
+                .data("list", newsService.getDialogue(id, contact, page));
     }
 }

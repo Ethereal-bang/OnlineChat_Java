@@ -83,9 +83,10 @@ SpringBoot
 ## News 消息
 库(多对一): id, sender, receiver, content(html格式), time
 
-### /getDialogue 与某人聊天记录
-并将对方 read 置为 true
+### /getDialogue/{page} 与某人聊天记录
+分页请求聊天记录，一次返回 8 条, 并将对方 read 置为 true
 + Params: id, contact
++ PathVariable: page
 + data: {list: News[], user: User}
 
 ### /send 发送消息

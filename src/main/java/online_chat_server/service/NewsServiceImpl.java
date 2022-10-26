@@ -59,14 +59,14 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public News[] getDialogue(int id, int contact) throws IOException {
+    public News[] getDialogue(int id, int contact, int page) throws IOException {
         // 将对方已读置为true
         contactMapper.updateRead(contact, id, true);
         // ws提示对方新消息
         webSocketServer.sendMessage(contact,
                 new WsNews("read", "")
                         .data("id", id));
-        return newsMapper.getDialogue(id, contact);
+        return newsMapper.getDialogue(id, contact, 8 * (page - 1));
     }
 
 }
