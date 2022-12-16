@@ -1,5 +1,6 @@
 package online_chat_server.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import online_chat_server.common.WsNews;
 import org.springframework.stereotype.Component;
@@ -36,11 +37,14 @@ public class WebSocketServer {
 
     /**
      * 收到客户端消息后调用的方法
-     *
      * @param message 客户端发送过来的消息*/
     @OnMessage
-    public void onMessage(String message) {
+    public void onMessage(String message, @PathParam("uid") int id) throws IOException {
         System.out.println("来自客户端的消息:" + message);
+        // 心跳机制
+        if (message.equals("ping")) {
+            sendMessage(id, new WsNews("connect", "pong"));
+        }
     }
 
     public void sendMessage(int id, WsNews news) throws IOException {
