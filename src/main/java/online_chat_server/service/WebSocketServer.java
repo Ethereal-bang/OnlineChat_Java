@@ -26,13 +26,13 @@ public class WebSocketServer {
     public void onOpen(Session session, @PathParam("uid") int uid) {
         this.session = session;
         electricSocketMap.put(uid, session);
-        System.out.println("有新连接加入。当前连接人数" + electricSocketMap.size());
+//        System.out.println("有新连接加入。当前连接人数" + electricSocketMap.size());
     }
 
     @OnClose
     public void onClose(@PathParam("uid") int id) {
         electricSocketMap.remove(id);
-        System.out.println("有连接断开。当前连接人数" + electricSocketMap.size());
+//        System.out.println("有连接断开。当前连接人数" + electricSocketMap.size());
     }
 
     /**
@@ -40,7 +40,7 @@ public class WebSocketServer {
      * @param message 客户端发送过来的消息*/
     @OnMessage
     public void onMessage(String message, @PathParam("uid") int id) throws IOException {
-        System.out.println("来自客户端的消息:" + message);
+//        System.out.println("来自客户端的消息:" + message);
         // 心跳机制
         if (message.equals("ping")) {
             sendMessage(id, new WsNews("connect", "pong"));

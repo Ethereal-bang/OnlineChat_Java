@@ -19,9 +19,9 @@ public class WebAppConfigurer implements WebMvcConfigurer {
     // 自定义资源映射
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        String filePath = "E:/pictures/server/";
+        String filePath = "/www/pictures/online_chat/";
         WebMvcConfigurer.super.addResourceHandlers(registry);
-        // url: localhost:8080/images/图片.png
+        // url: localhost:25639/images/图片.png
         registry.addResourceHandler("/images/**")
                 .addResourceLocations("classpath:/static/images/")
                 .addResourceLocations("file:" + filePath);

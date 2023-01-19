@@ -22,7 +22,7 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public String upload(MultipartFile multipartFile) {
-        String filesDir = "E:\\Pictures\\server\\";   // 放置图片的文件夹
+        String filesDir = "/www/pictures/online_chat/";   // 放置图片的文件夹
         // 获取源文件名称
         String originalFilename = multipartFile.getOriginalFilename();
         // 生成不重复标识
@@ -35,7 +35,7 @@ public class ImageServiceImpl implements ImageService {
 
         try {
             multipartFile.transferTo(file);
-            return "http://localhost:8080/images/" + uuid + fileSuffix; // 返回图片完整访问路径
+            return "http://1.15.69.160:25639/images/" + uuid + fileSuffix; // 返回图片完整访问路径
         } catch (IOException e) {
             e.printStackTrace();
         }
